@@ -13,7 +13,7 @@
 ---
 **Результат выполнения задания**
 
-1. Поднят предоставленный Vagrantfile:
+1. Поднят предоставленный `Vagrantfile`:
 
 ```
 Last login: Tue Feb 13 12:12:55 2024 from 10.0.2.2
@@ -61,4 +61,4 @@ nginx | SUCCESS => {
 }
 ```
 
-4. Создан шаблон jinja2 - `nginx.conf.j2`.
+4. Создан шаблон jinja2 - `nginx.conf.j2`
