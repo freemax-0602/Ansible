@@ -1,0 +1,36 @@
+---
+# Task для обновления репозиториев
+- name: NGINX | update OS
+  apt:
+    update_cache=yes
+  tags:
+    -update apt
+
+ # Task для установки nginx 
+- name: NGINX | Install NGINX
+  apt: 
+    name: nginx
+    state: latest
+  notify:
+    - restart nginx
+  tags:
+    - nginx-package
+
+# Task для правки nginx.conf  
+- name: NGINX | Create NGINX config file from template
+  # Подтягиваем конфиг nginx из шаблона jinja2 и правим nginx.conf на хосте nginx
+  template:
+    src: templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify:
+    - reload nginx
+  tags:
+    - nginx-configuration
+
+# Task для правки nginx.conf 
+- name: NGINX | Connect to internet web server
+  notify:
+    - restart nginx
+  ansible.builtin.uri:
+    url: "{{ url }}"
+    status_code: 200

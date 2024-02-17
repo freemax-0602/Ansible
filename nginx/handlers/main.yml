@@ -1,0 +1,12 @@
+---
+# Хэндлер для рестарта веб-сервера
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+# Хэндлер для перезапуска веб-сервера
+- name: reload nginx
+  systemd:
+    name: nginx
+    state: reloaded
