@@ -116,11 +116,17 @@ nginx                      : ok=5    changed=1    unreachable=0    failed=0    s
 ```
 7. В результате запуска `nginx.yml` развернут сервер веб-сервер nginx:
 
-h2 Playbook проверки на подключение
+* Playbook проверки на подключение
 ```
-
+# Task для проверки nginx.conf 
+- name: NGINX | Connect to internet web server
+  notify:
+    - restart nginx
+  ansible.builtin.uri:
+    url: "{{ url }}"
+    status_code: 200
 ```
-h2 Результат проверки:
+* Результат проверки:
 ```
 TASK [nginx : NGINX | Connect to internet web server] ***********************************************************************************************************************************
 ok: [nginx]

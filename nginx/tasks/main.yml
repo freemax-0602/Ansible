@@ -27,7 +27,7 @@
   tags:
     - nginx-configuration
 
-# Task для правки nginx.conf 
+# Task для проверки nginx.conf 
 - name: NGINX | Connect to internet web server
   notify:
     - restart nginx
